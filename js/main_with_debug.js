@@ -1,9 +1,6 @@
-//console.log("main debug");
-
-
 //initialize function called when the script loads
   function initialize(){
-		console.log('initialize');
+		//console.log('initialize');
 		cities();
 };
 
@@ -56,8 +53,8 @@ function cities(){
 // function to add the population column in table
 function addColumns(cityPop){
 
-	console.log("addColumns");
-	console.log(cityPop);
+	//console.log("addColumns");
+	//console.log(cityPop);
 //jquery assigns the function to execute for each row of the table on the html
 	$('tr').each(function(i){
 				// when i is equal to zero or for the top row the header
@@ -85,8 +82,9 @@ function addColumns(cityPop){
 						//console.log(citySize);
 
 	    		};
-					console.log(citySize);
-					// jquery adds the citysizeto the cell on the html
+					//console.log(citySize);
+          //jquery method to conatina the cell for citySize
+					// jquery adds the citysize to the cell on the html
 	    		$(this).append('<td>' + citySize + '</td>');
 	    	};
     });
@@ -95,7 +93,7 @@ function addColumns(cityPop){
 // funciton to add color to the txt when mouse is over text
 function addEvents(){
 	//console.log("addEvents");
-	// the function will execute on the element of the 'table'
+	//jquery selector of the 'table' for the mouseover function
 	$('table').mouseover(function(){
 		//when mouse is over the text the var color will print string 'rgb('
 		var color = "rgb(";
@@ -103,7 +101,9 @@ function addEvents(){
 		//for loop that will run 3 times selecting differnt color dn values at random
 		for (var i=0; i<3; i++){
 			//console.log(i);
-			// color seclected from dn value of 255
+			// color seclected from dn value at random a number between 0 and 1
+      //round selects nearest integer of the random number
+      //number is multiplied by 255 to achieve the random dn value for the color change when mouse hovers over table
 			var random = Math.round(Math.random() * 255);
 			// random value is concatinated to the the color value
 			color += random;
@@ -120,15 +120,17 @@ function addEvents(){
 
 	};
 	//console.log('color', color);
-	// at the table (this) the style color is
+	//jquery method that returns a style property color
 	$(this).css('color', color);
 });
+  //function clickme allows alert to pop up when mouse clicks on table
 	function clickme(){
-
-alert('Hey, you clicked me!');
+  //the alert in the box will read 'Hey, you clicked me!'
+  alert('Hey, you clicked me!');
 
 	};
-
+//pop up box occurs a single time
+//jquery selector for the table element for the clickme function
 $('table').on('click', clickme);
 
 
