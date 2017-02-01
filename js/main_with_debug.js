@@ -1,9 +1,9 @@
+//Author__DylanOsborn__
 //initialize function called when the script loads
   function initialize(){
 		//console.log('initialize');
 		cities();
 };
-
 
 //function to create a table with cities and their populations
 function cities(){
