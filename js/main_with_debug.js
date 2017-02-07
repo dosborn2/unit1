@@ -3,6 +3,8 @@
   function initialize(){
 		//console.log('initialize');
 		cities();
+    //calls the debugAjaxfunction inside the initialize function
+    debugAjax();
 };
 
 //function to create a table with cities and their populations
@@ -132,11 +134,39 @@ function addEvents(){
 //pop up box occurs a single time
 //jquery selector for the table element for the clickme function
 $('table').on('click', clickme);
-
-
 };
 
+// function called debugCallback that gives access to the data with parameter of mydata
+function debugCallback(mydata){
+  //jquery acces to the #mydiv (id) and adds the string 'GeoJSON data: ' and JSON.stringify(mydata) turns the js object mydata to string
+	$('#mydiv').append('GeoJSON data: ' + JSON.stringify(mydata));
+};
+//function for ajax
+function debugAjax(){
 
+  //defines the variable mydata
+	var mydata;
+  //.get is a alias of ajax when used with the jquery $
+  //3 perameters the url string, debugCallback-functioin and 'json' as a string
+	$.get("data/MegaCities.geojson", debugCallback, 'json');
+  // this would be used if $.ajax was used
+  //$.ajax("data/MegaCities.geojson")
+	//	dataType: "json",
+	//	success: debugCallback();
+
+
+
+  //to show that mydata cant be logged outside the function
+  //when run this displays undefined
+  console.log(mydata);
+
+
+// br signifies line break for the header - 'GeoJSON data:' (otherwise it would be on the same line as the data)
+	$('#mydiv').append('<br>GeoJSON data:<br>' + JSON.stringify(mydata));
+
+//this jquery line is unneccessary, does the same thing as the line above without the header line break
+//$('#mydiv').append('GeoJSON data: ' + JSON.stringify(mydata));
+};
 
 
 //call the initialize function when the document has loaded
